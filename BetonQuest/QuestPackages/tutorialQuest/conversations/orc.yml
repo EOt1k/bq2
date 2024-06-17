@@ -1,0 +1,45 @@
+conversations:
+  Орк:
+    quester: "Орк"
+    first: firstGreeting, node_3
+
+    NPC_options:
+      firstGreeting:
+        text: "Орки - это крупные ребята с зеленой кожей, острыми клыками и грубыми чертами лица. Они обладают физической силой, выносливостью и боевым духом. Орки часто представлены как воины, живущие в племенах или кланах, ценящих силу и верность своему вождю."
+        pointers: whereYouFrom,яещеподумаю
+        conditions: "!has_tag_race_complete"
+      whoAmI:
+        text: |-
+          Расса Орков имеет бонус к &4&lСиле +2 &rи &6&lТелосложению +1  
+          &rВы подтверждаете выбор этой расы? Потом её сменить уже будет нельзя
+        pointers: smallIsland, bigCity, node_1
+      islandAnswer:
+        text: "Поздравляем, теперь вы &a&lОрк!"
+        events: "raceOrc,tagracecomplete"
+      подумай:
+        text: "Возвращайся как надумаешь"
+      node_2:
+        text: Дуй к старику он тебе все расскажет
+        pointers: whereYouFrom, яещеподумаю
+      node_3:
+        text: Ты уже выбрал свою расу, ступай к старику
+        conditions: has_tag_race_complete
+
+    player_options:
+      whereYouFrom:
+        text: "Выбрать рассу Орк"
+        pointers: whoAmI
+      яещеподумаю:
+        text: "Я еще подумаю"
+        pointers: подумай
+      smallIsland:
+        text: "Да"
+        pointers: islandAnswer
+      bigCity:
+        text: "Нет"
+        pointers: firstGreeting, node_3
+      node_1:
+        text: Что еще за характеристики?
+        pointers: node_2
+        events: tag_GA_char
+        conditions: "!c_tag_GA_char"

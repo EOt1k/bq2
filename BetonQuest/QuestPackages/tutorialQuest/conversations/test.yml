@@ -1,0 +1,30 @@
+conversations:
+  test:
+    quester: "test"
+    NPC_options:
+      node_1:
+        text: Проверить харизму
+        pointers: node_2
+      node_3:
+        text: Ваша 1 харизма зарешала
+        conditions: rand1-2, харизма_1, !харизма_2
+      node_4:
+        text: Ващей 1 харизмы не достаточно
+        conditions: rand1-1, харизма_1, !харизма_2
+      node_5:
+        conditions: rand1-4, харизма_2, !харизма_3
+        text: Ваша 2 харизма зарешала
+      node_6:
+        conditions: rand1-1, харизма_2, !харизма_3
+        text: Ващей 2 харизмы не достаточно
+      node_7:
+        conditions: rand1-3, харизма_3
+        text: Ваша 3 харизма зарешала
+      node_8:
+        conditions: rand1-1, харизма_3
+        text: Ващей 3 харизмы не достаточно
+    first: node_1
+    player_options:
+      node_2:
+        text: Проверка
+        pointers: node_3, node_4, node_5, node_6, node_7, node_8

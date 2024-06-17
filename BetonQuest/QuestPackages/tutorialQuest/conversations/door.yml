@@ -1,0 +1,25 @@
+conversations:
+  door:
+    quester: door
+    NPC_options:
+      node_1:
+        text: Перед вами неизвестная железная дверь
+        pointers: node_2, node_3, node_6
+      node_4:
+        conditions: key_check
+        text: "*Вы открываете дверь с помощью ржавого ключа*"
+        events: key_take, dor_on
+      node_5:
+        text: "*Дверь заперта на ключ*"
+        pointers: node_2, node_3, node_6
+    first: node_1
+    player_options:
+      node_2:
+        text: "*Попытаться открыть*"
+        pointers: node_5
+      node_3:
+        text: "*Уйти*"
+      node_6:
+        text: "*Попытаться открыть с помощью ключа*"
+        conditions: key_check
+        pointers: node_4, node_5

@@ -1,0 +1,59 @@
+conversations:
+  Глава Охраны:
+    quester: "Глава Охраны"
+    NPC_options:
+      node_1:
+        text: Привествую, чем могу быть полезен?
+        pointers: node_2, node_3
+      node_4:
+        text: Хорошо, давай его сделаем тебе
+        pointers: node_6
+      node_5:
+        text: Какой?
+      node_7:
+        text: "Ответить на пару вопросов. Вопрос первый: Как вас зовут?"
+        pointers: node_8
+      node_9:
+        text: Хорошо %player%, сколько вам лет?
+        pointers: node_10
+      node_11:
+        text: Какой ваш пол?
+        pointers: node_12, node_13
+      node_14:
+        text: Отлично, вот ваш паспорт
+        pointers: node_15
+        events: pass_create_sigma, pass_create, pass_use
+      node_16:
+        text: Отлично, вот ваш паспорт
+        pointers: node_17
+        events: pass_create_women
+    first: node_1
+    player_options:
+      node_2:
+        conditions: "!pasport_check"
+        text: Мне нужно сделать паспорт
+        pointers: node_4
+      node_3:
+        conditions: pasport_check
+        text: У меня тут появился вопросик
+        pointers: node_5
+      node_6:
+        text: Что для этого нужно?
+        pointers: node_7
+      node_8:
+        text: "%player%"
+        pointers: node_9
+      node_10:
+        text: "18"
+        pointers: node_11
+      node_12:
+        text: Мужской
+        pointers: node_14
+      node_13:
+        text: Женский
+        pointers: node_16
+      node_15:
+        text: Спасибо
+        events: pass_create_false, pass_use_false
+      node_17:
+        text: Спасибо

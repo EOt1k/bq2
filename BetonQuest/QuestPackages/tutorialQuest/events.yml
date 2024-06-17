@@ -1,0 +1,206 @@
+events: 
+  raceOrc: folder raceOrc_com,raceOrc_lp,raceOrc_char_bod,raceOrc_char_pow
+  raceOrc_com: "command setrace %player% Orc"
+  raceOrc_lp: command lp user %player% parent set орк
+  raceOrc_char_bod: command rpg admin attribute give %player% bodytype 1
+  raceOrc_char_pow: command rpg admin attribute give %player% strength 2
+  
+  
+  raceHuman: folder raceHuman_com,raceHuman_lp,raceHiman_char_har,raceHiman_char_lov
+  raceHuman_com: "command setrace %player% Human"
+  raceHuman_lp: command lp user %player% parent set человек
+  raceHiman_char_har: command rpg admin attribute give %player% dexterity 2
+  raceHiman_char_lov: command rpg admin attribute give %player% lovkost 1
+  
+  raceDwarf: folder raceDwarf_com,raceDwarf_lp,raceDwarf_char_bod,raceDwarf_char_pow
+  raceDwarf_com: "command setrace %player% Dwarf"
+  raceDwarf_lp: command lp user %player% parent set дварф
+  raceDwarf_char_bod: command rpg admin attribute give %player% bodytype 2
+  raceDwarf_char_pow: command rpg admin attribute give %player% strength 1
+  
+  raceElf: folder raceElf_com,raceElf_lp,raceElf_char_mud,raceElf_char_int
+  raceElf_com: "command setrace %player% Elf"
+  raceElf_lp: command lp user %player% parent set эльф
+  raceElf_char_mud: command rpg admin attribute give %player% intelligence 2
+  raceElf_char_int: command rpg admin attribute give %player% intel 1
+  
+  
+  tag_GA1: tag add GA1
+  tag_GA2: tag add GA2
+  tag_GA_I: tag add GA_I
+  tag_GA_LOC: tag add GA_LOC
+  tag_GA_Y: tag add GA_Y
+  tag_GA_REC: tag add GA_REC
+  tag_GA_char: tag add GA_char
+  
+  
+  movenpc: "movenpc 8 4823;-54;5077;world 4823;-54;5096;world"
+  movenpcback: "movenpc 8 4823;-54;5096;world, 4823;-54;5090;world "
+  tagdel: tag del tagracecomplete
+  tagdel1: folder tagdel, tagrace2
+  tagrace: tag add tagrace
+  tagrace2: tag del tagrace
+  tagracecomplete: tag add tagracecomplete
+  movenpc2: movenpc 8 4823;-54;5077;world 4823;-54;5096;world
+  triggerEvent: notify Hey you have just opened that book!
+  tagbook: tag add tagbook
+  evbok: folder tagbook, triggerEvent
+  jorev: journal add quest_started
+  jorev1: journal update
+  jorev2: folder pageadd,jorev1
+  add_journal: journal add journal_id
+  addJournalEntry: journal add journalEntry
+  pageadd: "journal add firstpage"
+  journal_killBear: "journal add killBear"
+  quest_killBear: tag add KillBear_start
+  KillBear: folder quest_killBear,journal_killBear
+  
+  jor_sel: journal add Помочь_Торговцу delay:3
+  tag_sel: tag add help_sel
+  
+  jor2: folder jor_sel_del,jor_sel_up,jor_up
+  jor_sel_del: journal delete Помочь_Торговцу
+  jor_sel_up: journal add Помочь_Торговцу2
+  jor_up: journal update
+
+  
+  tpCity: folder tpCity_ef,tpCity_com period:1
+  tpCity_ef: command effect give %player% minecraft:blindness 3
+  tpCity_com: "teleport 1572;134;3181;world"
+  
+  #Ивенты для квеста "Прогнило что-то в городе"
+  moveХанс: folder movenpcХанс,movenpcХанс2,movenpcХанс3 period:13
+  movenpcХанс: movenpc 15 1607;152;3341;world 1610;155;3394;world
+  movenpcХанс2: movenpc 15 1613;147;3288;world 1607;152;3341;world
+  movenpcХанс3: movenpc 15 1638;147;3288;world 1613;147;3288;world
+  tag_Ханс_1: tag add Ханс1
+  convХанс: conversation СтражникХ conditions:!tag_Ханс2_comp
+  Ханс: folder convХанс delay:1
+  Хансidleend: command meg npc state citizens:15:[Стражник-Ханс] kpack_knight remove idle
+  stateХанс1: command meg npc state citizens:15:[Стражник-Ханс] kpack_knight add run_empty 
+  stateХанс2: command meg npc state citizens:15:[Стражник-Ханс] kpack_knight remove run_empty 
+  Хансwalk: folder stateХанс1,moveХанс,tag_Ханс_1  
+  ХансwalkEnd: folder stateХанс2 delay:2
+  
+  moveХанс2: folder backХанс1,backХанс2,backХанс3 period:8
+  backХанс1: movenpc 15 1606;149;3297;world 1638;147;3288;world 
+  backХанс2: movenpc 15 1607;152;3335;world 1609;148;3296;world
+  backХанс3: movenpc 15 1610;155;3395;world 1607;152;3338;world
+  
+  tag_X_2: folder tag_delХанс2_comp,tag_delХанс_2
+  tag_delХанс2_comp: tag delete Ханс2_comp 
+  tag_delХанс_2: tag delete Ханс2
+  
+  Ханс_log_tag: folder tag_delХанс_1,tag_Ханс_2,tag_Ханс_2_comp
+  tag_delХанс_1: tag delete Ханс1
+  tag_Ханс_2: tag add Ханс2
+  tag_Ханс_2_comp: tag add Ханс2_comp 
+  
+  effect1_if: folder poison_effect conditions:!body_12,!has_antidote
+  poison_effect: effect POISON 30 1
+  
+  start_notify_block: objective start notify_block
+  mess_effect1_if: folder mess_effect1_if,start_notify_block conditions:!notify_block
+  mess_effect1_if_notify: notify Внимание! Вы попали в зону с ядвитым воздухом. Вам необходимо немедленно принять противоядие, иначе ваше здоровье будет в опасностию
+  
+  start_antidote: folder mes_start_antidote,obj_antidote
+  mes_start_antidote: notify Вы выпили противоядие, теперь слабые яды на вас не действуют
+  obj_antidote: objective start antidote
+  
+  remove_poison: folder remove_poison1,remove_conf
+  remove_poison1: deleffect POISON
+  remove_conf: deleffect CONFUSION
+  remove_antidote: folder mes_remove_antidote,obj_antidote
+  mes_remove_antidote: notify Действие противоядия закончилось
+  obj_antidote: objective remove antidote
+  
+  convTrap: folder bebra conditions:!has_cdConv
+  bebra: conversation bebra
+  objcdConv: objective start cdConv 
+  objcdConv2: objective start cdConv2
+  objcdConv3: objective start cdConv3
+  
+  trap: folder trap_on,trap_off period:3600
+  trap_on: door 302;93;1315;world on
+  trap_off: door 302;93;1315;world off
+  
+  eff_loc2: folder eff1_loc2,eff2_loc2 conditions:!body_14,!has_antidote
+  eff1_loc2: effect POISON 30 2
+  eff2_loc2: effect CONFUSION 30 2
+  
+  eff_loc3: effect POISON 30 2
+  
+  RAT: folder spawn_rat,spawn_rat2,spawn_rat3,spawn_rat_miniboss,rat_cd1 conditions:!con_rat_cd
+  spawn_rat: mspawnmob 122;120;1437;world rpg_rat:1 1
+  spawn_rat2: mspawnmob 117;120;1433;world rpg_rat:1 1
+  spawn_rat3: mspawnmob 130;120;1420;world rpg_rat:1 1
+  spawn_rat_miniboss: mspawnmob 133;120;1425;world rpg_rat_undead:1 1
+  rat_cd1: objective start rat_cd
+  rat_cd_complete: objective complete rat_cd
+
+  convSkul: folder skulcv conditions:!has_cdConv2
+  skulcv: conversation skul
+  
+  convвентиль: folder convsвен conditions:!has_cdConv3
+  convsвен: conversation вентиль
+  
+  gp_вент: globalpoint вентиль 1 action:add
+  gp_вент2: globalpoint вентиль 2 action:add
+  gp_вент3: globalpoint вентиль 4 action:add
+  gp_вент4: globalpoint вентиль 6 action:add
+  ddoor: folder ddoor_on,objvent condition:!vent_cd
+  ddoor_on: folder ddoor_on_com,drake_spawn
+  ddoor_on_com: door 157;120;1406;world on 
+  ddoor_off: door 157;120;1406;world off
+  objvent: objective start objvent
+  gp_vent_del: globalpoint вентиль 0 action:set
+  
+  drake_spawn: folder drake_spawn_com,drake_spawn_mes,block_liz_del condition:!vent_cd
+  drake_spawn_com: mspawnmob 168;120;1398;world Nocsy_MountPack-Lizard:1 1
+  drake_spawn_mes: notify Из соседней комнаты доносится чей-то рёв
+  
+  block_liz: setblock MOSSY_COBBLESTONE 165;117;1398;world
+  block_liz_del: setblock AIR 165;117;1398;world
+  
+  point_gob: point gob_rep 1 action:add
+  
+  door2_conv: conversation door2
+
+  door_conv: conversation door
+  key_take: take key_door
+  dor_on: door 157;120;1423;world on condition:!vent_cd
+  dor_off: door 157;120;1423;world off
+
+  tag_info_shbd: tag add info_sdbd
+  tag_info_bandits: tag add info_bandits
+  tag_info_seller: tag add info_seller
+  tag_info_hram: tag add info_hram
+  
+  scorp: folder scorp_spawn,scorp_mes,scorp_ef,scorp_block,obj_cdSpawn condition:!cdSpawn,!sneak
+  scorp_spawn: mspawnmob 156;120;1379;world Scorpion_King:1 1
+  scorp_mes: notify Неожиданно из гнезда появляется Пещерный Скорпион
+  scorp_ef: effect DARKNESS 3 7
+  scorp_block: folder scorp_block_1,scorp_block_2,scorp_block_3,scorp_block_4
+  scorp_block_1: setblock STONE 159;120;1391;world
+  scorp_block_2: setblock STONE 159;121;1391;world
+  scorp_block_3: setblock STONE 168;120;1377;world
+  scorp_block_4: setblock STONE 168;121;1377;world
+  obj_cdSpawn: objective start cdSpawn
+  
+  scorp_block_del: folder scorp_block_del1,scorp_block_del2,scorp_block_del3,scorp_block_del4
+  scorp_block_del1: setblock AIR 159;120;1391;world
+  scorp_block_del2: setblock AIR 159;121;1391;world
+  scorp_block_del3: setblock AIR 168;120;1377;world
+  scorp_block_del4: setblock AIR 168;121;1377;world
+  
+  fail_pas: notify Пароль неверный
+  suc_pas: notify Пароль верный
+  
+  give_key: give key_door
+  
+  
+  
+  
+  
+  
+  locationNotify: "notify &cThe skeletons roam at x\\:123 z\\:456!"

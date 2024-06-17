@@ -1,0 +1,173 @@
+conversations:
+  God Adventure:
+    quester: "Бог Приключений"
+
+    NPC_options:
+      Начало:
+        text: |-
+          А, еще одна заблудшая душа тут появилась, полагаю у тебя есть вопросы.
+          (Вращение колёсиком мыши - просмотр возможных ответов
+          Пробел - выбор ответа
+          Шифт - выход из диалога)
+        pointers: Раса, назад, node_2
+        conditions: "!c_tag_GA1"
+      Ответка:
+        text: Ты заблудшая душа, которая должна переродиться в этом мире. Теперь тебе надо пойти выбрать себе подходящую расу.
+        pointers: node_2, назад, node_4, node_1
+      назад2:
+        text: Я - Бог Приключений, я тот, кто направляет смелых душой и сильных сердцем на путь приключений. Ну и по совметительствую помогаю заблудшим душам, как ты, переродиться в этом мире
+        pointers: Раса, node_2, node_4
+      node_3:
+        text: Чистилище, Загробный мир, Рай, короче много имён у этого места, называй как тебе удобно
+        pointers: Раса, назад
+      node_5:
+        text: К сожалению у меня нет  разрешения ответить на такой вопрос, могу сказать только то, что дальше ты сможешь найти ответ на свой вопрос, если будешь хорошо искать
+        pointers: назад, node_2, node_1, Раса
+      node_6:
+        conditions: c_tag_GA1, !has_tag_race
+        text: Что-то ещё милый друг?
+        pointers: Раса, node_2, назад, node_4, node_1
+      node_7:
+        text: Если внимательно посмотришь по сторонам то заметишь, что помимо нас есть представители различных рас, каждый очень хочет видеть тебя в своих рядах. Ступай поговори с ними и выбери нужную расу
+        pointers: node_8
+      node_9:
+        text: Ты выбрал расу?
+        conditions: has_tag_race, !c_tag_GA2
+        pointers: node_10, node_11, node_12
+      node_13:
+        text: Ах да, я совсем забыл тебе рассказать про них. Смотри, у каждой расы есть своя предрасположенность к определенной характеристике, что даёт им различные баффы. Могу рассказать более подробнее рассказать про определённую характеристику
+        pointers: node_14, node_15
+      node_16:
+        text: Про какую?
+        pointers: node_17, node_18, node_19, node_20, node_21, node_22
+      node_23:
+        pointers: node_29, node_30
+        text: Сила это сила брат
+      node_24:
+        text: Телосложение это телосложение
+        pointers: node_29, node_30
+      node_25:
+        text: Ловкость это ловкость
+        pointers: node_29, node_30
+      node_26:
+        text: Интеллект это интеллект
+        pointers: node_29, node_30
+      node_27:
+        text: Мудрость это мудрость
+        pointers: node_29, node_30
+      node_28:
+        text: Харизма это харизма
+        pointers: node_29, node_30
+      node_31:
+        text: Отлично, ты готов переродиться
+        pointers: node_33
+      node_32:
+        text: Так иди и выбирай, че припёрся то
+      node_34:
+        text: Дальше я тебя телепортирую к городу, откуда начнётся твоя история
+        pointers: node_35, node_36
+      node_37:
+        text: Почему? Ладно, как будешь готов скажешь
+        events: tag_GA2
+        pointers: node_39, node_40
+      node_38:
+        conditions: c_tag_GA2
+        text: Ты готов к телепортации?
+        pointers: node_42, node_43
+      node_41:
+        text: Моё имя.....Хорошо....Меня зовут Аурил Гевис
+      node_44:
+        text: Хорошо, начинаю телепортацию
+        events: tpCity
+      node_45:
+        text: Давай быстрее, времени не так уж и много
+
+    player_options:
+      назад:
+        text: Кто ты такой?
+        pointers: назад2
+        event:
+        events: tag_GA1, tag_GA_Y
+        conditions: "!c_tag_GA_Y"
+      Раса:
+        text: Кто я такой?
+        pointers: Ответка
+        events: tag_GA1, tag_GA_I
+        conditions: "!c_tag_GA_I"
+      node_2:
+        text: Что это за место?
+        pointers: node_3
+        events: tag_GA1, tag_GA_LOC
+        conditions: "!c_tag_GA_LOC"
+      node_4:
+        text: Почему я переродился?
+        pointers: node_5
+        events: tag_GA_REC
+      node_1:
+        text: Как мне выбрать расу?
+        pointers: node_7
+      node_8:
+        text: Хорошо
+        events: tagrace
+      node_10:
+        text: Да
+        conditions: has_tag_race_complete
+        pointers: node_31
+      node_11:
+        text: Расскажи мне про характеристики
+        conditions: c_tag_GA_char
+        pointers: node_13
+      node_12:
+        text: Нет
+        conditions: "!has_tag_race_complete"
+        pointers: node_32
+      node_14:
+        text: Давай
+        pointers: node_16
+      node_15:
+        text: Не надо
+      node_17:
+        text: "&4&lСила"
+        pointers: node_23
+      node_18:
+        text: "&6&lТелосложение"
+        pointers: node_24
+      node_19:
+        text: "&2&lЛовкость"
+        pointers: node_25
+      node_20:
+        text: "&b&lИнтеллект"
+        pointers: node_26
+      node_21:
+        text: "&3&lМудрость"
+        pointers: node_27
+      node_22:
+        text: "&e&lХаризма"
+        pointers: node_28
+      node_29:
+        text: Спасибо, я уже всё понял
+      node_30:
+        text: Расскажи мне про еще одну характеристику
+        pointers: node_16
+      node_33:
+        text: А что будет дальше?
+        pointers: node_34
+      node_35:
+        text: Хорошо, начинай телепортацию
+        events: tpCity
+      node_36:
+        text: Подожди я не готов
+        pointers: node_37
+      node_39:
+        text: У меня остались незавершенные дела
+      node_40:
+        text: Я хочу узнать твоё имя
+        pointers: node_41
+      node_42:
+        text: Да
+        pointers: node_44
+      node_43:
+        text: Нет
+        pointers: node_45
+
+    first: Начало, node_6, node_9, node_38

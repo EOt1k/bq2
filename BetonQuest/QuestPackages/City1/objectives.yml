@@ -1,0 +1,6 @@
+objectives:
+  troll_loc_mess_1: location 1175;133;3148;world 2 events:fol_troll global persistent
+  mess_cd: delay 10 seconds
+  lizard_kill: mmobkill Nocsy_MountPack-Lizard events:liz_kill
+  board1: action right BARRIER loc:301;94;1349;world range:5 events:liz_kill global persistent
+  

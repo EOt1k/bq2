@@ -1,0 +1,36 @@
+objectives:
+  location_objective: location 288;93;1302;world 4 events:effect1_if global persistent
+  location_objective2: location 295;86;1315;world 4 events:eff_loc2 global persistent
+  loc_obj3: location 123;117;1404;world 4 events:eff_loc3 global persistent
+  trap: action right IRON_TRAPDOOR loc:302;93;1316;world range:2 events:convTrap global persistent
+  antidote: delay 6 seconds
+  cdConv: delay 20 seconds
+  cdConv2: delay 5 seconds
+  cdConv3: delay 1 seconds
+  cdSpawn: delay 3600 seconds
+  consume_antidote: consume antidote_base events:remove_antidote,start_antidote,remove_poison global persistent
+  notify_block: delay 1
+  rat_loc: location 124;121;1431;world 7 events:RAT global persistent 
+  rat_cd: delay 2000 seconds
+  вентель_open: location 157;120;1414;world 8 events:ddoor,drake_spawn condition:gp_вент_3 global persistent
+  objvent: delay 3600 seconds events:ddoor_off,gp_vent_del,block_liz,dor_off,rat_cd_complete 
+  
+  scorp_loc: location 155;120;1379;world 3 events:scorp global persistent
+  
+  rat_kill: mmobkill rat_rpg amount:3
+  rat_kill2: mmobkill rpg_rat_undead:1 
+  
+  scorp_kill: mmobkill Scorpion_King amount:1 events:scorp_block_del global persistent
+  
+  skul: action right BARRIER loc:190;120;1438;world range:2 events:convSkul global persistent
+  
+  door: action right IRON_DOOR loc:157;120;1423;world range:2 events:door_conv global persistent
+  
+  door2: action right IRON_DOOR loc:157;120;1406;world range:2 events:door2_conv global persistent
+  
+  вентиль: action right BARRIER loc:160;120;1414;world range:2 events:convвентиль global persistent
+  
+  password: password test ignoreCase fail:fail_pas events:suc_pas
+  
+  Ханс_loc_tag: location 1637;147;3288;world 6 events:Ханс_log_tag,convХанс conditions:loc_Ханс global persistent
+  Ханс_loc_tag2: location 1637;147;3288;world 6 events:tag_X_2 conditions:!loc_Ханс global persistent

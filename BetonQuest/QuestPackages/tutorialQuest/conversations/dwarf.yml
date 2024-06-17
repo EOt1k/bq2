@@ -1,0 +1,43 @@
+conversations:
+  Дварф:
+    quester: "Дварф"
+    first: Начало, node_3
+
+    NPC_options:
+      Начало:
+        text: "Дварфы - это коренастые существа сильной и мускулистой комплекции, известные своим мастерством в кузнечном деле, горном делах и боевых искусствах. Они обычно изображаются с короткими ногами, длинной бородой и широкими плечами."
+        pointers: Выбор,нет
+        conditions: "!has_tag_race_complete"
+      подтверждение:
+        text: |-
+          Расса Дварфов имеет Бонус к &6&lТелосложению +2 &rи &4&lСиле +1
+          &rВы подтверждаете выбор этой расы? Потом её сменить уже будет нельзя
+        pointers: да, нет, node_1
+      раса:
+        text: "Поздравляем, теперь вы &a&lДварф!"
+        events: raceDwarf, tagracecomplete, tagdel
+      подумай:
+        text: "Возвращайся как надумаешь"
+      node_2:
+        text: Дуй к старику, он тебе всё расскажет
+        pointers: Выбор, нет
+      node_3:
+        text: Ты уже выбрал свою рассу, ступай к старику
+        conditions: has_tag_race_complete
+
+    player_options:
+      Выбор:
+        text: "Выбрать расу Дварф"
+        pointers: подтверждение
+        conditions: has_tag_race
+      да:
+        text: "Да"
+        pointers: раса
+      нет:
+        text: "Я еще подумаю"
+        pointers: подумай
+      node_1:
+        text: Что еще за Характеристики?
+        pointers: node_2
+        events: tag_GA_char
+        conditions: "!c_tag_GA_char"

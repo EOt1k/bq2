@@ -1,0 +1,14 @@
+items:
+  antidote_base: POTION
+  coin: GOLD_NUGGET name:§eМонета custom-model-data:2009 flags:HIDE_ATTRIBUTES
+  key_door: BLAZE_ROD name:§fChest_Key custom-model-data:10000
+  openMenuItem: "BOOK title:Quests"
+
+  xpBottle: "EXPERIENCE_BOTTLE"
+  filler: "GRAY_STAINED_GLASS_PANE"
+
+  skeletonQuestActiveItem: "BONE"
+  goldQuestActiveItem: "RAW_GOLD"
+  questDone: "LIME_CONCRETE"
+  
+  

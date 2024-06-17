@@ -1,0 +1,88 @@
+conditions:
+  c_tag_GA1: tag GA1
+  c_tag_GA2: tag GA2
+  c_tag_GA_I: tag GA_I
+  c_tag_GA_LOC: tag GA_LOC
+  c_tag_GA_Y: tag GA_Y
+  c_tag_GA_char: tag GA_char
+  
+  
+  has_tag_race: tag tagrace
+  has_tag_race_complete: tag tagracecomplete
+  KillBear_start: tag KillBear_start
+  KillBear_reward: tag KillBear_reward
+  
+  tag_Ханс_1: tag Ханс1
+  tag_Ханс_2: tag Ханс2
+  tag_Ханс2_comp: tag Ханс2_comp
+  
+  loc_Ханс: npclocation 15 1637;147;3288;world 2
+  
+  sel_help_tag: tag help_sel
+  
+  har_17: mmoattribute dexterity 17
+  har_12: mmoattribute dexterity 12
+  har_15: mmoattribute dexterity 15
+  loc_1: location 288;93;1302;world 4
+  body_12: mmoattribute bodytype 12
+  body_14: mmoattribute bodytype 14
+  has_antidote: objective antidote
+  antidote_in_hand: mmohand CONSUMABLE Противоядие 
+  power_14: mmoattribute strength 12
+  power_20: mmoattribute strength 20
+  npc_hide: tag npc_hide
+  has_cdConv: objective cdConv
+  has_cdConv2: objective cdConv2
+  has_cdConv3: objective cdConv3
+  sneak: sneak
+  cdSpawn: objective cdSpawn
+  vent_cd: objective objvent
+  notify_block: objective notify_block
+  con_rat_cd: objective rat_cd
+  med_con: mmoattribute intelligence 15
+  skul: iablockat itemsadder:dungeon_skeleton 291;93;1315;world
+  point_gob_cond: point gob_rep 3
+  point_gob_cond5: point gob_rep 5
+  hide_test: location 1308;182;3247;world 5
+
+  харизма_1: mmoattribute dexterity 1
+  отриц_хар_1: and харизма_2,har_12,har_15,har_17
+  харизма_2: mmoattribute dexterity 2
+  харизма_3: mmoattribute dexterity 3
+
+  сила_1: mmoattribute strength 1
+  сила_2: mmoattribute strength 2
+  сила_3: mmoattribute strength 3
+  сила_4: mmoattribute strength 4
+  сила_5: mmoattribute strength 5
+
+  rand1-5: random 1-5
+  rand1-4: random 1-4
+  rand1-3: random 1-3
+  rand1-2: random 1-2
+  rand1-1: random 1-1
+  
+  tag_info_sdbd: tag info_sdbd
+  tag_info_bandits: tag info_bandits
+  tag_info_seller: tag info_seller
+  tag_info_hram: tag info_hram
+  
+  check_info: check ^tag info_sdbd ^tag info_bandits ^tag info_seller ^tag info_hram
+  
+  gp_вент_3: or gp_vent1,gp_vent2,gp_vent3,gp_vent4,gp_vent5,gp_vent6
+  gp_vent1: globalpoint вентиль 12
+  gp_vent2: globalpoint вентиль 13
+  gp_vent3: globalpoint вентиль 14
+  gp_vent4: globalpoint вентиль 15
+  gp_vent5: globalpoint вентиль 16
+  gp_vent6: globalpoint вентиль 17
+  
+  key_check: or key_check_hand,key_inv
+  key_check_hand: hand key_door
+  key_inv: item key_door:1
+  
+  
+  
+  
+  skeletonQuestDone: "tag skeletonQuestDone"
+  goldQuestDone: "tag goldQuestDone"

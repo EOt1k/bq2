@@ -1,0 +1,7 @@
+conversations:
+  door2:
+    quester: door2
+    NPC_options:
+      node_1:
+        text: "*Дверь заклинило, вы не можете открыть её*"
+    first: node_1

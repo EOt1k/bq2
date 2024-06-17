@@ -1,0 +1,12 @@
+conversations:
+  test2:
+    quester: "test2"
+    NPC_options:
+      node_1:
+        text: Тп
+        pointers: node_2
+    first: node_1
+    player_options:
+      node_2:
+        text: Тп
+        events: tpCity

@@ -1,0 +1,32 @@
+conversations:
+  skul:
+    quester: "Скелет"
+    first: "Начало"
+
+    NPC_options:
+      Начало:
+        text: "*Вы видите перед собой неизвестный труп*"
+        pointers: node_1, node_5, node_2
+      node_3:
+        text: "*Вы обыскиваете труп и находите ржавый ключ*"
+        events: give_key
+      node_6:
+        text: |-
+          &a&lУспех, благодаря вашим знания Медицины (Мудрость) вы опознали труп
+
+
+          &rЭто частично
+          разложившееся тело гоблина, также видны следы кислотного яда
+        conditions: med_con
+      node_7:
+        text: "&4&lПровал, вы не смогли опознать труп"
+        conditions: "!med_con"
+    player_options:
+      node_1:
+        text: "*Обыскать труп*"
+        pointers: node_3
+      node_2:
+        text: "*Уйти*"
+      node_5:
+        text: "*Исследовать труп*"
+        pointers: node_6, node_7

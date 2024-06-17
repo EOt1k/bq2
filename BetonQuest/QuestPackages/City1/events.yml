@@ -1,0 +1,39 @@
+events:
+  pass_create_sigma: sudo passport new %player% 18 Мужской Холост Денмарш
+  pass_create_women: sudo passport new %player% 18 Женский Холост Денмарш
+  pass_use: command lp user %player% permission set enderapassport.use true
+  pass_use_false: command lp user %player% permission set enderapassport.use false
+  pass_create: command op %player%
+  pass_create_false: command deop %player%
+  
+  ##Троилный мост
+  fol_troll: folder troll_mess_1,troll_mess_1_cd conditions:!troll_cd
+  troll_mess_1: notify Шум бегущей воды с каждой минутой становится всё громче, и вот за очередным поворотом дороги вы видите реку и старый мост. Однако пасторальный пейзаж омрачает разбитый фургон, оставленный посреди моста, и залитая кровью брусчатка. Вокруг ни души.
+  troll_mess_1_cd: objective start mess_cd
+  
+  blood: setblock RED_CARPET 1173;133;3143;world 
+  ##Троилный мост
+  fol_troll: folder troll_mess_1,troll_mess_1_cd conditions:!troll_cd
+  troll_mess_1: notify Шум бегущей воды с каждой минутой становится всё громче, и вот за очередным поворотом дороги вы видите реку и старый мост. Однако пасторальный пейзаж омрачает разбитый фургон, оставленный посреди моста, и залитая кровью брусчатка. Вокруг ни души.
+  troll_mess_1_cd: objective start mess_cd
+  blood: setblock REDSTONE 1173;134;3143;world ignorePhysics
+  
+  block_1: setblock MOSSY_COBBLESTONE 166;117;1398;world
+  block_2: setblock AIR 158;117;1397;world
+
+  fol_troll_2: folder dam_fol,eff_fol,tp_test,lay period:1
+  
+  dam_fol: folder damage_1,troll_mes_2
+
+  eff_fol: folder troll_ef1,troll_ef2
+  
+  lay: sudo lay 
+  
+  tp_test: teleport 1419;102;3081;world
+  troll_ef1: effect CONFUSION 7 1
+  troll_ef2: effect DARKNESS 7 6 
+  troll_mes_2: notify Ваш чем-то сильно ударили по голове
+  damage_1: damage 1
+  
+  liz_kill: notify Вы убили Канализационного Дрейка
+

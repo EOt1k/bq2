@@ -1,0 +1,3 @@
+conditions:
+  pasport_check: permission enderapassport.use
+  troll_cd: objective mess_cd
